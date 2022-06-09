@@ -170,15 +170,6 @@ def public_menu():
 	except (KeyError,IOError):
 		print(' [!] Not public Or Token Expire')
 		exit()
-def update():
-	import os
-	try:
-		os.system("rm -rf fbcracker.py ; git clone https://github.com/chidexzy/fbcracker ; cd fbcracker ; cp fbcracker.py /data/data/com.termux/files/home/fbcracker ; cd ; cd fbcracker ; rm -rf fbcracker")
-		xox(' TOOL UPDATE SUCCESSFUL 👍 ')
-		os.system("python2 fbcracker.py")
-	except IOError:
-		print(' YOUR DEVICE IS NOT SUPPORTED! ')
-	       	exit()
 def File():
 			clear()
 			print(logo)
@@ -410,15 +401,15 @@ YP      Y8888P'  `Y88P' 88      88   YD  `Y88P'
                                                    
                                                    
 \033
-__________________Ceyab-Oo______________________
+__________________FBCRACKER PRO______________________
   
-  Auther   :  CEY4B KH4N
+  Auther   :  Chidexzy
  
-  Github   :  https://github.com/Ceyab-Oo
+  Github   :  https://github.com/chidexzy
 
-  Facebook : https://facebook.com/CeYaB.KhaN.01
+  Facebook : https://facebook.com/promise.okwudire
   
-__________________Ceyab-Oo______________________\033[1;37m""")
+__________________FBCRACKER PRO______________________\033[1;37m""")
 
 class Main:
 	def __init__(self):
@@ -433,7 +424,6 @@ class Main:
 		print(" [3] Create File")
 		print(" [4] 2009-10 Cloning")
 		print(" [5] 2011-14 Cloning")
-		print(" [6] Update Tool")
 		print(" [E] Exit Programming\n")
 		ANMOL =input(" Choose : ")
 		if ANMOL in ["1", "01"]:
@@ -447,8 +437,6 @@ class Main:
 		if ANMOL in ["5", "05"]:
 			self.old2()
 			exit()
-		if ANMOL in ["6", "06"]:
-			update()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

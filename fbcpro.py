@@ -451,7 +451,7 @@ class Main:
 				os.system("python fbcpro.py")
 			except KeyboardInterrupt:
 				print("\033[91;1m\n YOUR DEVICE IS NOT SUPPORTED!\n")
-	        		Main()
+	        		exit()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

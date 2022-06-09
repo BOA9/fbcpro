@@ -293,6 +293,7 @@ def name2():
 					pwv.append(nmf)
 				else:
 					pwv.append(nmf)
+					pwv.append(frs+'lst')
 					pwv.append(frs+'123')
 					pwv.append(frs+'12345')
 					pwv.append(frs+'1234')

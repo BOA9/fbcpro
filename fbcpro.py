@@ -429,6 +429,7 @@ class Main:
 		print(" [3] Create File")
 		print(" [4] 2009-10 Cloning")
 		print(" [5] 2011-14 Cloning")
+		print(" [6] Update Tool")
 		print(" [E] Exit Programming\n")
 		ANMOL =input(" Choose : ")
 		if ANMOL in ["1", "01"]:
@@ -436,12 +437,14 @@ class Main:
 		if ANMOL in ["2", "02"]:
 			Public()
 		if ANMOL in ["3", "03"]:
-			os.system("python Dump.py")
+			os.system("python fbcpro.py")
 		if ANMOL in ["4", "04"]:
 			self.old()
 		if ANMOL in ["5", "05"]:
 			self.old2()
 			exit()
+		if ANMOL in ["6", "06"]:
+			self.old()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

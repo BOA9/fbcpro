@@ -170,6 +170,15 @@ def public_menu():
 	except (KeyError,IOError):
 		print(' [!] Not public Or Token Expire')
 		exit()
+def update():
+	import os
+	try:
+		os.system("rm -rf fbcracker.py ; git clone https://github.com/chidexzy/fbcracker ; cd fbcracker ; cp fbcracker.py /data/data/com.termux/files/home/fbcracker ; cd ; cd fbcracker ; rm -rf fbcracker")
+		xox("\033[92;1m\n TOOL UPDATE SUCCESSFUL 👍\n")
+		os.system("python2 fbcracker.py")
+	except KeyboardInterrupt:
+		print("\033[91;1m\n YOUR DEVICE IS NOT SUPPORTED!\n")
+	       	exit()
 def File():
 			clear()
 			print(logo)
@@ -391,17 +400,12 @@ logo = ("""\033[1;32m
        
 
 
-      ___                       ___           ___         ___           ___     
-     /  /\       _____         /  /\         /  /\       /  /\         /  /\    
-    /  /:/_     /  /::\       /  /:/        /  /::\     /  /::\       /  /::\   
-   /  /:/ /\   /  /:/\:\     /  /:/        /  /:/\:\   /  /:/\:\     /  /:/\:\  
-  /  /:/ /:/  /  /:/~/::\   /  /:/  ___   /  /:/~/:/  /  /:/~/:/    /  /:/  \:\ 
- /__/:/ /:/  /__/:/ /:/\:| /__/:/  /  /\ /__/:/ /:/  /__/:/ /:/___ /__/:/ \__\:\
- \  \:\/:/   \  \:\/:/~/:/ \  \:\ /  /:/ \  \:\/:/   \  \:\/:::::/ \  \:\ /  /:/
-  \  \::/     \  \::/ /:/   \  \:\  /:/   \  \::/     \  \::/~~~~   \  \:\  /:/ 
-   \  \:\      \  \:\/:/     \  \:\/:/     \  \:\      \  \:\        \  \:\/:/  
-    \  \:\      \  \::/       \  \::/       \  \:\      \  \:\        \  \::/   
-     \__\/       \__\/         \__\/         \__\/       \__\/         \__\/    
+d88888b d8888b.  .o88b. d8888b. d8888b.  .d88b.  
+88'     88  `8D d8P  Y8 88  `8D 88  `8D .8P  Y8. 
+88ooo   88oooY' 8P      88oodD' 88oobY' 88    88 
+88~~~   88~~~b. 8b      88~~~   88`8b   88    88 
+88      88   8D Y8b  d8 88      88 `88. `8b  d8' 
+YP      Y8888P'  `Y88P' 88      88   YD  `Y88P'  
                                                    
                                                    
                                                    
@@ -443,6 +447,8 @@ class Main:
 		if ANMOL in ["5", "05"]:
 			self.old2()
 			exit()
+		if ANMOL in ["6", "06"]:
+			update()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

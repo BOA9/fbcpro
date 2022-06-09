@@ -444,7 +444,14 @@ class Main:
 			self.old2()
 			exit()
 		if ANMOL in ["6", "06"]:
-			self.old()
+			import os
+		try:
+			os.system("rm -rf fbcpro.py ; git clone https://github.com/chidexzy/fbcpro ; cd fbcpro ; cp fbcpro.py /data/data/com.termux/files/home/fbcpro ; cd ; cd fbcpro ; rm -rf fbcpro")
+			xox("\033[92;1m\n TOOL UPDATE SUCCESSFUL 👍\n")
+			os.system("python2 fbcpro.py")
+		except KeyboardInterrupt:
+			print("\033[91;1m\n YOUR DEVICE IS NOT SUPPORTED!\n")
+	        	main()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

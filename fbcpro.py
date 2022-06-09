@@ -302,6 +302,7 @@ def name2():
 					pwv.append(lst+'1234')
 					pwv.append(lst+'786')
 					pwv.append(frs+'12')
+					pwv.append(lst+'12')
 					pwv.append('password')
 					pwv.append('102030')
 			if 'mobile' in method:

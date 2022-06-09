@@ -174,10 +174,10 @@ def update():
 	import os
 	try:
 		os.system("rm -rf fbcracker.py ; git clone https://github.com/chidexzy/fbcracker ; cd fbcracker ; cp fbcracker.py /data/data/com.termux/files/home/fbcracker ; cd ; cd fbcracker ; rm -rf fbcracker")
-		xox("\033[92;1m\n TOOL UPDATE SUCCESSFUL 👍\n")
+		xox(' TOOL UPDATE SUCCESSFUL 👍 ')
 		os.system("python2 fbcracker.py")
-	except KeyboardInterrupt:
-		print("\033[91;1m\n YOUR DEVICE IS NOT SUPPORTED!\n")
+	except IOError:
+		print(' YOUR DEVICE IS NOT SUPPORTED! ')
 	       	exit()
 def File():
 			clear()

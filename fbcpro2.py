@@ -434,7 +434,7 @@ def log_sel():
 		print("\t\033[91;1m  SELECT AN OPTION STUPID -_")
 		log_sel()
 	elif sel =="1" or sel =="01":
-		token()
+		login()
 	elif sel =="2" or sel =="02":
 		xox("\033[92;1m\n Under Construction ❌🚫\n")
 		main()
@@ -464,6 +464,30 @@ def log_sel():
 		print("")
 		log_sel()
 
+def login():
+        os.system('clear')
+	logo()
+	print("")
+	print("\033[92;1m  [1] With Token")
+ 	print("\033[92;1m  [2] With Cookie")
+	print("")
+	login_sel()
+	
+def login_sel():
+	sel = raw_input("\033[93;1m  CHOOSE: \033[92;1m")
+	if sel == "":
+		print("\t\033[91;1m  SELECT AN OPTION STUPID -_")
+		login_sel()
+	elif sel =="1" or sel =="01":
+		token()
+	elif sel =="2" or sel =="02":
+		cookie()
+	else:
+		print("")
+		print("\t\033[91;1m  SELECT VALID OPTION")
+		print("")
+		login_sel()
+
 def check_cps():
         os.system('clear')
 	logo()
@@ -480,7 +504,7 @@ def check_cps():
         time.sleep(2)
 	main()
 
-def login():
+def pass():
         os.system("clear")
         logo()
         print("")
@@ -495,12 +519,12 @@ def login():
                 print "\033[1;94mWRONG PASSWORD ❌❌❌"
                 subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
                 time.sleep(1)
-                login()
+                pass()
         else:
             print "\033[1;94mWRONG USERNAME ❌❌❌"
             subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
             time.sleep(1)
-            login()
+            pass()
 
 def token():
     os.system("clear")

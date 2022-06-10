@@ -507,28 +507,6 @@ def check_cps():
         time.sleep(2)
 	main()
 
-def pass():
-        os.system("clear")
-        logo()
-        print("")
-        username = raw_input("\033[1;97m\x1b[1;91mTool Username \x1b[1;97m»» \x1b[1;97m")
-        if (username == CorrectUsername):
-            password = raw_input("\033[1;97m \x1b[1;91mTool Password  \x1b[1;97m» \x1b[1;97m")
-            if (password == CorrectPassword):
-                print "\033[1;92mLogged in successfully 💪😈"
-	        time.sleep(1)
-                token()
-            else:
-                print "\033[1;94mWRONG PASSWORD ❌❌❌"
-                subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
-                time.sleep(1)
-                pass()
-        else:
-            print "\033[1;94mWRONG USERNAME ❌❌❌"
-            subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
-            time.sleep(1)
-            pass()
-
 def token():
     os.system("clear")
     try:

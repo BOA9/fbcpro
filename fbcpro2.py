@@ -470,12 +470,9 @@ def file():
 	print("")
 	print("\t\033[93;1m   AUTO PASS CRACKING")
 	print("")
-	filelist = raw_input('\033[92;1m  INPUT FILE: ')
-	try:
-		for line in open(filelist, 'r').readlines():
-			id.append(line.strip())
-			file_option()
-	
+	filepath = raw_input('\033[92;1m  INPUT FILE: ')
+	file_option()
+		
 	except IOError:
 		print("\t\033[91;1m  REQUESTED FILE NOT FOUND")
 		print("")
@@ -496,11 +493,14 @@ def file_option():
 def selopt():
 	select = raw_input("\033[92;1m  CHOOSE : ")
 	if select =="1":
-		main1()
+		crack_select1()
+		os.system("file")
 	elif select =="2":
-		main2()
+		crack_select()
+		os.system("file")
 	elif select =="3":
-	        main3()
+	        crack_select2()
+		os.system("file")
 	elif select =="0":
 		main()
 	else:
@@ -732,13 +732,13 @@ def crack_select1():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4":
+	elif select =="file":
 		os.system("clear")
 		logo()
 		print("")
 		print("\t\033[93;1m   AUTO PASS CRACKING")
 		print("")
-		filelist = raw_input('\033[92;1m  INPUT FILE: ')
+		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -762,7 +762,7 @@ def crack_select1():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main1(arg):
+	def main(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
@@ -1031,7 +1031,7 @@ def crack_select1():
 		except:
 			pass
 	p = ThreadPool(30)
-	p.map(main1, id)
+	p.map(main, id)
 	print("")
 	linex()
 	print("")
@@ -1138,13 +1138,13 @@ def crack_select():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4":
+	elif select =="file":
 		os.system("clear")
 		logo()
 		print("")
 		print("\t\033[93;1m   AUTO PASS CRACKING")
 		print("")
-		filelist = raw_input('\033[92;1m  INPUT FILE: ')
+		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1168,7 +1168,7 @@ def crack_select():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main2(arg):
+	def main(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
@@ -1298,7 +1298,7 @@ def crack_select():
 		except:
 			pass
 	p = ThreadPool()
-	p.map(main2, id)
+	p.map(main, id)
 	print("")
 	linex()
 	print("")
@@ -1405,13 +1405,13 @@ def crack_select2():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4":
+	elif select =="file":
 		os.system("clear")
 		logo()
 		print("")
 		print("\t\033[93;1m   AUTO PASS CRACKING")
 		print("")
-		filelist = raw_input('\033[92;1m  INPUT FILE: ')
+		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1435,7 +1435,7 @@ def crack_select2():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main3(arg):
+	def main(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
@@ -1820,7 +1820,7 @@ def crack_select2():
 		except:
 			pass
 	p = ThreadPool(30)
-	p.map(main3, id)
+	p.map(main, id)
 	print("")
 	linex()
 	print("")

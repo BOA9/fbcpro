@@ -494,13 +494,13 @@ def selopt():
 	select = raw_input("\033[92;1m  CHOOSE : ")
 	if select =="1":
 		crack_select1()
-		select =="4444"
+		sys.stdout.write("4444")
 	elif select =="2":
 		crack_select()
-		select =="4444"
+		sys.stdout.write("4444")
 	elif select =="3":
 	        crack_select2()
-		select =="4444"
+		sys.stdout.write("4444")
 	elif select =="0":
 		main()
 	else:

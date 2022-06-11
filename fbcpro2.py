@@ -733,7 +733,7 @@ def crack_select1():
 	def main(arg):
 		global loop
 		bi = random.choice([u,k,kk,b,h,hh])
-		pers = loop*100/len(id)
+		loop += 1
 		sys.stdout.write('\r %s[ Cracking ] %s•%s  '%(bi,loop,len(id))),
 		sys.stdout.flush()
 		user=arg
@@ -1004,7 +1004,6 @@ def crack_select1():
 		except:
 			pass
 	p = ThreadPool(30)
-	loop+=1
 	p.map(main, id)
 	print("")
 	linex()

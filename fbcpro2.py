@@ -465,6 +465,34 @@ def log_sel():
 		print("")
 		log_sel()
 
+def file():
+        os.system("clear")
+        logo()
+        print("")
+        print("\033[92;1m  [1] CRACK WITH PASSWORD 1")
+        print("\033[93;1m  [2] CRACK WITH PASSWORD 2")
+        print("\033[94;1m  [3] CRACK WITH ALL PASSWORDS")
+        print('\033[91;1m  [0] BACK')
+        print("")
+        menu_option()
+    
+def menu_option():
+	select = raw_input("\033[92;1m  CHOOSE : ")
+	if select =="1":
+		main1()
+	elif select =="2":
+		main2()
+	elif select =="3":
+	        main3()
+	elif select =="0":
+		main()
+	else:
+		print("")
+		print("\t\033[91;1m     SELECT VALID OPTION")
+		print("")
+		menu_option()
+
+
 def check_cps():
         os.system('clear')
 	logo()
@@ -717,7 +745,7 @@ def crack_select1():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main(arg):
+	def main1(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
@@ -1123,7 +1151,7 @@ def crack_select():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main(arg):
+	def main2(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)
@@ -1390,7 +1418,7 @@ def crack_select2():
 	print("\033[92;1m  FB BOMBING HAS STARTED\x1b[0m")
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
-	def main(arg):
+	def main3(arg):
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)

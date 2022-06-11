@@ -1004,6 +1004,7 @@ def crack_select1():
 		except:
 			pass
 	p = ThreadPool(30)
+	loop+=1
 	p.map(main, id)
 	print("")
 	linex()

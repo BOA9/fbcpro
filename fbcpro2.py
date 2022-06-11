@@ -494,13 +494,13 @@ def selopt():
 	select = raw_input("\033[92;1m  CHOOSE : ")
 	if select =="1":
 		crack_select1()
-		os.system("file")
+		select = 4444
 	elif select =="2":
 		crack_select()
-		os.system("file")
+		select = 4444
 	elif select =="3":
 	        crack_select2()
-		os.system("file")
+		select = 4444
 	elif select =="0":
 		main()
 	else:
@@ -732,7 +732,7 @@ def crack_select1():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="file":
+	elif select =="4444":
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1132,7 +1132,7 @@ def crack_select():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="file":
+	elif select =="4444":
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1393,7 +1393,7 @@ def crack_select2():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="file":
+	elif select =="4444":
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())

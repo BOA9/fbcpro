@@ -466,6 +466,22 @@ def log_sel():
 		log_sel()
 
 def file():
+	os.system("clear")
+	logo()
+	print("")
+	print("\t\033[93;1m   AUTO PASS CRACKING")
+	print("")
+	filelist = raw_input('\033[92;1m  INPUT FILE: ')
+	try:
+		for line in open(filelist, 'r').readlines():
+			id.append(line.strip())
+				
+	except IOError:
+		print("\t\033[91;1m  REQUESTED FILE NOT FOUND")
+		print("")
+		raw_input("\033[93;1m PRESS ENTER TO BACK")
+		crack1()
+
         os.system("clear")
         logo()
         print("")
@@ -1014,7 +1030,7 @@ def crack_select1():
 		except:
 			pass
 	p = ThreadPool(30)
-	p.map(main, id)
+	p.map(main1, id)
 	print("")
 	linex()
 	print("")
@@ -1281,7 +1297,7 @@ def crack_select():
 		except:
 			pass
 	p = ThreadPool()
-	p.map(main, id)
+	p.map(main2, id)
 	print("")
 	linex()
 	print("")
@@ -1803,7 +1819,7 @@ def crack_select2():
 		except:
 			pass
 	p = ThreadPool(30)
-	p.map(main, id)
+	p.map(main3, id)
 	print("")
 	linex()
 	print("")

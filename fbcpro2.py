@@ -437,7 +437,8 @@ def log_sel():
 	elif sel =="1" or sel =="01":
 		token()
 	elif sel =="2" or sel =="02":
-		file()
+		xox("\033[92;1m\n Under Construction ❌🚫\n")
+		main()
 	elif sel =="3" or sel =="03":
 		check_cps()
 	elif sel =="4" or sel =="04":
@@ -463,49 +464,6 @@ def log_sel():
 		print("\t\033[91;1m  SELECT VALID OPTION")
 		print("")
 		log_sel()
-
-def file():
-	os.system("clear")
-	logo()
-	print("")
-	print("\t\033[93;1m   AUTO PASS CRACKING")
-	print("")
-	filelist = raw_input('\033[92;1m  INPUT FILE: ')
-	try:
-		file_option()
-	except IOError:
-		print("\t\033[91;1m  REQUESTED FILE NOT FOUND")
-		print("")
-		raw_input("\033[93;1m PRESS ENTER TO BACK")
-		file()
-
-def file_option():
-        os.system("clear")
-        logo()
-        print("")
-        print("\033[92;1m  [1] CRACK WITH PASSWORD 1")
-        print("\033[93;1m  [2] CRACK WITH PASSWORD 2")
-        print("\033[94;1m  [3] CRACK WITH ALL PASSWORDS")
-        print('\033[91;1m  [0] BACK')
-        print("")
-        selopt()
-    
-def selopt():
-	select = raw_input("\033[92;1m  CHOOSE : ")
-	if select =="1":
-		select.crack_select1(1)
-	elif select =="2":
-		select.crack_select("1")
-	elif select =="3":
-	        select.crack_select2("4444")
-	elif select =="0":
-		main()
-	else:
-		print("")
-		print("\t\033[91;1m     SELECT VALID OPTION")
-		print("")
-		file_option()
-
 
 def check_cps():
         os.system('clear')
@@ -729,7 +687,13 @@ def crack_select1():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4444":
+	elif select =="4":
+		os.system("clear")
+		logo()
+		print("")
+		print("\t\033[93;1m   AUTO PASS CRACKING")
+		print("")
+		filelist = raw_input('\033[92;1m  INPUT FILE: ')
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1129,7 +1093,13 @@ def crack_select():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4444":
+	elif select =="4":
+		os.system("clear")
+		logo()
+		print("")
+		print("\t\033[93;1m   AUTO PASS CRACKING")
+		print("")
+		filelist = raw_input('\033[92;1m  INPUT FILE: ')
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())
@@ -1390,7 +1360,13 @@ def crack_select2():
 				print("\033[91;1m  CANNOT SCAN REACTIONS")
 			print("\033[94;1m  TOTAL IDS  : \033[0;92m%s\033[0;97m"%(len(id)))
 		time.sleep(3)
-	elif select =="4444":
+	elif select =="4":
+		os.system("clear")
+		logo()
+		print("")
+		print("\t\033[93;1m   AUTO PASS CRACKING")
+		print("")
+		filelist = raw_input('\033[92;1m  INPUT FILE: ')
 		try:
 			for line in open(filelist, 'r').readlines():
 				id.append(line.strip())

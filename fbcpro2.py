@@ -733,7 +733,6 @@ def crack_select1():
 	def main(arg):
 		global loop
 		bi = random.choice([u,k,kk,b,h,hh])
-		loop += 1
 		sys.stdout.write('\r %s[ Cracking ] %s•%s  '%(bi,loop,len(id))),
 		sys.stdout.flush()
 		user=arg

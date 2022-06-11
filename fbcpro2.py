@@ -475,13 +475,15 @@ def file():
 	try:
 		for line in open(filelist, 'r').readlines():
 			id.append(line.strip())
-				
+			file_option()
+	
 	except IOError:
 		print("\t\033[91;1m  REQUESTED FILE NOT FOUND")
 		print("")
 		raw_input("\033[93;1m PRESS ENTER TO BACK")
-		crack1()
+		file()
 
+def file_option():
         os.system("clear")
         logo()
         print("")
@@ -490,9 +492,9 @@ def file():
         print("\033[94;1m  [3] CRACK WITH ALL PASSWORDS")
         print('\033[91;1m  [0] BACK')
         print("")
-        menu_option()
+        selopt()
     
-def menu_option():
+def selopt():
 	select = raw_input("\033[92;1m  CHOOSE : ")
 	if select =="1":
 		main1()
@@ -506,7 +508,7 @@ def menu_option():
 		print("")
 		print("\t\033[91;1m     SELECT VALID OPTION")
 		print("")
-		menu_option()
+		file_option()
 
 
 def check_cps():
